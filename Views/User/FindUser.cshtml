@@ -1,0 +1,35 @@
+﻿@model KidsWorld.Models.Class.User
+@{
+    ViewBag.Title = "FindUser";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>FindUser</h2>
+<br/>
+@using(Html.BeginForm("EditUser","User",FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("ad")
+    <br />
+    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "ad soyad ata" })
+    <br />
+    @Html.Label("unvan")
+    <br />
+    @Html.TextBoxFor(x => x.FullAdress, new { @class = "form-control" })
+    <br />
+    @Html.Label("Email")
+    <br />
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    <br />
+    @Html.Label("sifre")
+    <br />
+    @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+    <br />
+    @Html.HiddenFor(x => x.User_Id)
+    <br />
+    @Html.HiddenFor(x => x.UserId)
+
+    <button class="btn btn-warning">Redakte et</button>
+
+</div>
+}

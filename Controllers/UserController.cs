@@ -1,0 +1,63 @@
+﻿using KidsWorld.Models.Class;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace KidsWorld.Controllers
+{
+    public class UserController : Controller
+    {
+        // GET: User
+        Context c = new Context();
+        [Authorize]
+        public ActionResult Index()
+        {
+            var dgr = c.Users.Where(x => x.Status == 0).ToList();
+            return View(dgr);
+        }
+        [HttpGet]
+        public ActionResult AddUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddUser(User k)
+        {
+            DateTime today = DateTime.Today;
+            k.RecordDate = today;
+            k.User_Id = 1;
+            c.Users.Add(k);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult FindUser(int id)
+        {
+            var usr = c.Users.Find(id);
+            return View("FindUser", usr);
+        }
+
+
+        public ActionResult DeleteUser(int id)
+        {
+            var usr = c.Users.Find(id);
+            usr.Status = 1;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult EditUser(User k)
+        {
+            var usr = c.Users.Find(k.UserId);
+            usr.FullName = k.FullName;
+            usr.FullAdress = k.FullAdress;
+            usr.Email = k.Email;
+            usr.Password = k.Password;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+    }
+}

@@ -1,0 +1,29 @@
+﻿@model KidsWorld.Models.Class.Category
+
+@{
+    ViewBag.Title = "FindCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>FindUser</h2>
+<br />
+@using (Html.BeginForm("EditCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("ad")
+        <br />
+        @Html.TextAreaFor(x => x.Name, new { @class = "form-control"})
+        <br />
+        @Html.Label("Subid")
+        <br />
+        @Html.TextBoxFor(x => x.SubId, new { @class = "form-control" })
+        @*<br />
+        @Html.HiddenFor(x => x.User_Id)*@
+        <br />
+        @Html.HiddenFor(x => x.CategoryId)
+
+        <button class="btn btn-warning">Redakte et</button>
+
+    </div>
+}
+

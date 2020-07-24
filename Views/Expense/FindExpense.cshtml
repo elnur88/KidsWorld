@@ -1,0 +1,29 @@
+﻿@model KidsWorld.Models.Class.Expense
+
+@{
+    ViewBag.Title = "FindExpense";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>FindUser</h2>
+<br />
+@using (Html.BeginForm("EditExpense", "Expense", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("ad")
+        <br />
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        <br />
+        @Html.Label("Məbləğ")
+        <br />
+        @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+        @*<br />
+            @Html.HiddenFor(x => x.User_Id)*@
+        <br />
+        @Html.HiddenFor(x => x.ExpenseId)
+
+        <button class="btn btn-warning">Redakte et</button>
+
+    </div>
+}
+

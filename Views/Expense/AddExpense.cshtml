@@ -1,0 +1,24 @@
+﻿@model KidsWorld.Models.Class.Expense
+
+@{
+    ViewBag.Title = "AddExpense";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Xərclər</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.Label("Təyinat")
+    <br />
+    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    @Html.Label("Məbləğ")
+    <br />
+    @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+
+
+    <br />
+    <button class="btn btn-primary">elave et</button>
+
+</form>
+

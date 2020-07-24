@@ -1,0 +1,26 @@
+﻿@model KidsWorld.Models.Class.Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Kateqaorya</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.Label("ad")
+    <br />
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    @Html.Label("Subid")
+    <br />
+    @Html.TextBoxFor(x => x.SubId, new { @class = "form-control" })
+    <br />
+    @Html.Label("Userid")
+    @*<br />
+    @Html.TextBoxFor(x => x.User.UserId, new { @class = "form-control" })*@
+    
+
+    <br />
+    <button class="btn btn-primary">elave et</button>
+
+</form>

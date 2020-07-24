@@ -1,0 +1,33 @@
+﻿@model KidsWorld.Models.Class.User
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>AddUser</h2>
+<br/>
+<form class="form-group" method="post">
+    @Html.Label("ad")
+    <br />
+    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "ad soyad ata" })
+    <br />
+    @Html.Label("adress")
+    <br />
+    @Html.TextBoxFor(x => x.FullAdress, new { @class = "form-control" })
+    <br />
+    @Html.Label("Email")
+    <br />
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    <br />
+    @Html.Label("istifadeci adi")
+    <br />
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+    <br />
+    @Html.Label("parol")
+    <br />
+    @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-primary">elave et</button>
+
+</form>
