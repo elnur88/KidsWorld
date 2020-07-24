@@ -22,5 +22,7 @@ namespace KidsWorld.Models.Class
         public int SubId { get; set; }
         public virtual User User { get; set; }
 
+        
+
     }
 }
