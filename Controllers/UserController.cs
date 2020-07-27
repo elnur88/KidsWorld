@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,21 +15,21 @@ namespace KidsWorld.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            User1 usr = new User1();
+            
             var dgr = (from y in c.Users
                        join z in c.Users on y.UserId equals z.User_Id
                        where y.Status == 0 && z.Status==0
                        select new User1
                        {
-                           UserId= y.UserId,
-                           RecordDate= y.RecordDate,
+                           UserId= z.UserId,
+                           RecordDate= z.RecordDate,
                            User_Id= y.User_Id,
                            UserName1 = y.UserName,
-                           FullName= y.FullName,
-                           FullAdress= y.FullAdress,
+                           FullName= z.FullName,
+                           FullAdress= z.FullAdress,
                            UserName = z.UserName,
-                           Password= y.Password,
-                           Status =y.Status
+                           Password= z.Password,
+                           Status =z.Status
                        }).Where(y => y.Status == 0).ToList();
            // var dgr = c.Users.Where(x => x.Status == 0).ToList();
            
@@ -37,6 +38,13 @@ namespace KidsWorld.Controllers
         [HttpGet]
         public ActionResult AddUser()
         {
+            List<SelectListItem>  usercombo = (from x in c.Users.Where(x=>x.Status==0).ToList()
+                                         select new SelectListItem
+                                         {
+                                             Text = x.UserName,
+                                             Value = x.UserId.ToString()
+                                         }).ToList();
+            ViewBag.dgr1 = usercombo;
             return View();
         }
         [HttpPost]
