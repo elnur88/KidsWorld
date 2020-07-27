@@ -17,7 +17,7 @@ namespace KidsWorld.Controllers
             User1 usr = new User1();
             var dgr = (from y in c.Users
                        join z in c.Users on y.UserId equals z.User_Id
-                       where y.Status == 0
+                       where y.Status == 0 && z.Status==0
                        select new User1
                        {
                            UserId= y.UserId,
@@ -27,7 +27,8 @@ namespace KidsWorld.Controllers
                            FullName= y.FullName,
                            FullAdress= y.FullAdress,
                            UserName = z.UserName,
-                           Password= y.Password
+                           Password= y.Password,
+                           Status =y.Status
                        }).ToList();
            // var dgr = c.Users.Where(x => x.Status == 0).ToList();
            
