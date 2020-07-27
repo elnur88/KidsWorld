@@ -24,5 +24,8 @@ namespace KidsWorld.Models.Class
         public string SubCategoryName { get; set; }
         public int SubId { get; set; }
         public virtual User User { get; set; }
+
+        public ICollection<GoodsInfo> GoodsInfos { get; set; }
+
     }
 }

@@ -1,0 +1,57 @@
+﻿@model KidsWorld.Models.Class.GoodsInfo
+@{
+    ViewBag.Title = "AddGoodsInfo";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<h2>AddGoodsInfo</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.Label("Ad")
+    <br />
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "ad soyad ata" })
+    <br />
+    @Html.Label("Melumat")
+    <br />
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    @Html.Label("Olcu")
+    <br />
+    @Html.TextBoxFor(x => x.Size, new { @class = "form-control" })
+    <br />
+    @Html.Label("Reng")
+    <br />
+    @Html.TextBoxFor(x => x.Color, new { @class = "form-control" })
+    <br />
+    @Html.Label("Say")
+    <br />
+    @Html.TextBoxFor(x => x.Count, new { @class = "form-control" })
+    <br />
+    @Html.Label("Alis qiymeti")
+    <br />
+    @Html.TextBoxFor(x => x.PurchasePrice, new { @class = "form-control" })
+    <br />
+    @Html.Label("Satis qiymeti")
+    <br />
+    @Html.TextBoxFor(x => x.SalePrice, new { @class = "form-control" })
+    <br />
+    @Html.Label("Barkod")
+    <br />
+    @Html.TextBoxFor(x => x.Barcode, new { @class = "form-control" })
+    <br />
+    @Html.Label("Qeydiyata alan")
+    <br />
+    @Html.DropDownListFor(x => x.UserId, (List<SelectListItem>)ViewBag.dgr1,
+                               new { @class = "form-control" })
+    <br />
+    @Html.Label("Kateqoriya")
+    <br />
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.dgr2,
+                               new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-primary">elave et</button>
+
+</form>

@@ -1,0 +1,60 @@
+﻿@using KidsWorld.Models.Class;
+@model List<GoodsInfo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header"><h4>GoodsInfo</h4></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Tarix</th>
+                                <th>Adi</th>
+                                <th>Melumat</th>
+                                <th>Olcu</th>
+                                <th>Reng</th>
+                                <th>Say</th>
+                                <th>Alis qiymeti</th>
+                                <th>Satis qiymeti</th>
+                                <th>Barkod</th>
+                                <th>Kateqoriya</th>
+                                <th>Sil</th>
+                                <th>Redakte et</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var k in Model)
+                            {
+                                <tr>
+                                    <td>@k.GoodsInfoId</td>
+                                    <td>@k.RecordDate</td>
+                                    <td>@k.Name</td>
+                                    <td>@k.Description</td>
+                                    <td>@k.Size</td>
+                                    <td>@k.Color</td>
+                                    <td>@k.Count</td>
+                                    <td>@k.PurchasePrice</td>
+                                    <td>@k.SalePrice</td>
+                                    <td>@k.Barcode</td>
+                                    <td>@k.Category.Name</td>
+                                    <td><a href="#" class="btn btn-success">Sil</a></td>
+                                    <td><a href="/GoodsInfo/FindGoodsInfo/@k.GoodsInfoId" class="btn btn-success">Redakte et</a></td>
+                                </tr>
+                            }
+                            </tfoot>
+                    </table>
+                    <br />
+
+                    <a href="/GoodsInfo/AddGoodsInfo" class="btn btn-primary">AddGoodsInfo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Row-->

@@ -50,8 +50,8 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult AddUser(User k)
         {
-            DateTime today = DateTime.Today;
-            k.RecordDate = today;
+            
+            k.RecordDate = DateTime.Now;
             k.User_Id = 1;
             c.Users.Add(k);
             c.SaveChanges();

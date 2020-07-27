@@ -41,8 +41,8 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category k)
         {
-            DateTime today = DateTime.Today;
-            k.RecordDate = today;
+            
+            k.RecordDate = DateTime.Now;
             k.Status = 0;
             k.SubId = 0;
             //k.User.UserId = 5;

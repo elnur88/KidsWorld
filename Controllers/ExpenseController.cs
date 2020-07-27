@@ -26,8 +26,8 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult AddExpense(Expense k)
         {
-            DateTime today = DateTime.Today;
-            k.RecordDate = today;
+            
+            k.RecordDate = DateTime.Now;
             k.Status = 0;
             //k.User.UserId = 5;
             c.Expenses.Add(k);
