@@ -14,7 +14,23 @@ namespace KidsWorld.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var dgr = c.Users.Where(x => x.Status == 0).ToList();
+            User1 usr = new User1();
+            var dgr = (from y in c.Users
+                       join z in c.Users on y.UserId equals z.User_Id
+                       where y.Status == 0
+                       select new User1
+                       {
+                           UserId= y.UserId,
+                           RecordDate= y.RecordDate,
+                           User_Id= y.User_Id,
+                           UserName1 = y.UserName,
+                           FullName= y.FullName,
+                           FullAdress= y.FullAdress,
+                           UserName = z.UserName,
+                           Password= y.Password
+                       }).ToList();
+           // var dgr = c.Users.Where(x => x.Status == 0).ToList();
+           
             return View(dgr);
         }
         [HttpGet]
