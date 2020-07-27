@@ -11,6 +11,7 @@ namespace KidsWorld.Controllers
     {
         // GET: Category
         Context c = new Context();
+        [Authorize]
         public ActionResult Index()
         {
             var dgr = c.Categories.Where(x => x.Status == 0).ToList();
