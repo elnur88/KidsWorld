@@ -145,6 +145,7 @@
     <Compile Include="Models\Class\GoodsPhoto.cs" />
     <Compile Include="Models\Class\Order.cs" />
     <Compile Include="Models\Class\Sale.cs" />
+    <Compile Include="Models\Class\User1.cs" />
     <Compile Include="Models\Class\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

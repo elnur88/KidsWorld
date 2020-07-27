@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<KidsWorld.Models.Class.User1>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -16,6 +16,7 @@
                                 <th>Id</th>
                                 <th>Tarix</th>
                                 <th>userid</th>
+                                <th>Qeydiyata alan</th>
                                 <th>adi</th>
                                 <th>Adres</th>
                                 <th>Username</th>
@@ -27,26 +28,26 @@
                         <tbody>
                             @foreach (var k in Model)
                             {
-                                <tr>
-                                    <td>@k.UserId</td>
-                                    <td>@k.RecordDate</td>
-                                    <td>@k.User_Id</td>
-                                    <td>@k.FullName</td>
-                                    <td>@k.FullAdress</td>
-                                    <td>@k.UserName</td>
-                                    <td>@k.Password</td>
-                                    <td><a href="/User/DeleteUser/@k.UserId" class="btn btn-success">Sil</a></td>
-                                    <td><a href="/User/FindUser/@k.UserId" class="btn btn-success">Redakte et</a></td>
-                                </tr>
+                            <tr>
+                                <td>@k.UserId</td>
+                                <td>@k.RecordDate</td>
+                                <td>@k.User_Id</td>
+                                <td>@k.UserName1 </td>
+                                <td>@k.FullName</td>
+                                <td>@k.FullAdress</td>
+                                <td>@k.UserName</td>
+                                <td>@k.Password</td>
+                                <td><a href="/User/DeleteUser/@k.UserId" class="btn btn-success">Sil</a></td>
+                                <td><a href="/User/FindUser/@k.UserId" class="btn btn-success">Redakte et</a></td>
+                            </tr>
                             }
                             </tfoot>
                     </table>
                     <br />
-                   
+
                     <a href="/User/AddUser" class="btn btn-primary">AddUser</a>
                 </div>
             </div>
         </div>
     </div>
 </div><!-- End Row-->
-
