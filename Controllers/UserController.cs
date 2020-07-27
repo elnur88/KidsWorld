@@ -38,7 +38,7 @@ namespace KidsWorld.Controllers
         [HttpGet]
         public ActionResult AddUser()
         {
-            List<SelectListItem> usercombo = (from x in c.Users.Where(x=>x.Status==0).ToList()
+            List<SelectListItem>  usercombo = (from x in c.Users.Where(x=>x.Status==0).ToList()
                                          select new SelectListItem
                                          {
                                              Text = x.UserName,
