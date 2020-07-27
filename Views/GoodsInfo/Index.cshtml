@@ -1,5 +1,4 @@
-﻿@using KidsWorld.Models.Class;
-@model List<GoodsInfo>
+﻿@model IEnumerable<KidsWorld.Models.Class.GoodsInfo>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -53,6 +52,8 @@
                     <br />
 
                     <a href="/GoodsInfo/AddGoodsInfo" class="btn btn-primary">AddGoodsInfo</a>
+                    <br />
+                    <br />
                 </div>
             </div>
         </div>
