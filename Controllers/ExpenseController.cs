@@ -11,6 +11,7 @@ namespace KidsWorld.Controllers
     {
         // GET: Expense
         Context c = new Context();
+        [Authorize]
         public ActionResult Index()
         {
             var dgr = c.Expenses.Where(x => x.Status == 0).ToList();

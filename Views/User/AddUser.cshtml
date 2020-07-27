@@ -15,6 +15,11 @@
     <br />
     @Html.TextBoxFor(x => x.FullAdress, new { @class = "form-control" })
     <br />
+    @Html.Label("Qeydiyata alan")
+    <br />
+    @Html.DropDownListFor(x => x.User_Id,(List<SelectListItem>)ViewBag.dgr1 ,
+                               new { @class = "form-control" })
+    <br />
     @Html.Label("Email")
     <br />
     @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
