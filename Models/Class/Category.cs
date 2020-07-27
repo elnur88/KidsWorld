@@ -19,10 +19,10 @@ namespace KidsWorld.Models.Class
         [Column(TypeName = "NVarchar")]
         [StringLength(20)]
         public string Name { get; set; }
+        [Column(TypeName = "NVarchar")]
+        [StringLength(20)]
+        public string SubCategoryName { get; set; }
         public int SubId { get; set; }
         public virtual User User { get; set; }
-
-        
-
     }
 }

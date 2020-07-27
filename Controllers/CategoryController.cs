@@ -13,7 +13,27 @@ namespace KidsWorld.Controllers
         Context c = new Context();
         public ActionResult Index()
         {
-            var dgr = c.Categories.Where(x => x.Status == 0).ToList();
+
+            User1 usr = new User1();
+            var dgr = (from y in c.Categories
+                       join z in c.Categories on y.CategoryId equals z.SubId
+                       where y.Status == 0 && z.Status == 0
+                       select new User1
+                       {
+                           UserId = y.UserId,
+                           RecordDate = y.RecordDate,
+                           User_Id = y.User_Id,
+                           UserName1 = y.UserName,
+                           FullName = y.FullName,
+                           FullAdress = y.FullAdress,
+                           UserName = z.UserName,
+                           Password = y.Password,
+                           Status = y.Status
+                       }).Where(y => y.Status == 0).ToList();
+
+
+
+            // var dgr = c.Categories.Where(x => x.Status == 0).ToList();
             return View(dgr);
 
         }

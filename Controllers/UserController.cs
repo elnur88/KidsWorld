@@ -29,7 +29,7 @@ namespace KidsWorld.Controllers
                            UserName = z.UserName,
                            Password= y.Password,
                            Status =y.Status
-                       }).ToList();
+                       }).Where(y => y.Status == 0).ToList();
            // var dgr = c.Users.Where(x => x.Status == 0).ToList();
            
             return View(dgr);
