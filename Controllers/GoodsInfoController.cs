@@ -12,8 +12,11 @@ namespace KidsWorld.Controllers
     {
         // GET: GoodsInfo
         Context c = new Context();
+        [Authorize]
         public ActionResult Index()
         {
+
+
             var dgr = c.GoodsInfos.Where(x => x.Status == 0).ToList();
             return View(dgr);
 
@@ -43,10 +46,10 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult AddGoodsInfo(GoodsInfo k)
         {
-            DateTime today = DateTime.Today;
+            
             k.RecordDate = DateTime.Now ;
-           // k.Status = 0;
-            //k.GoodsPhoto.PhotoId = 1;
+            k.Status = 0;
+            k.GoodsPhoto.PhotoId = 1;
             c.GoodsInfos.Add(k);
             c.SaveChanges();
             return RedirectToAction("Index");
