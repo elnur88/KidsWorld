@@ -1027,7 +1027,11 @@
     <Content Include="Views\GoodsInfo\AddGoodsInfo.cshtml" />
     <Content Include="Views\GoodsInfo\FindGoodsInfo.cshtml" />
     <Content Include="Views\GoodsInfo\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Customer\Index.cshtml" />
+=======
+    <Content Include="Views\Home\AdminLayout.cshtml" />
+>>>>>>> 15cb2b87627218547904c0f7cbb8ec504b306b60
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
