@@ -27,6 +27,7 @@ namespace KidsWorld.Controllers
                            UserName1 = y.UserName,
                            FullName= z.FullName,
                            FullAdress= z.FullAdress,
+                           Email= y.Email,
                            UserName = z.UserName,
                            Password= z.Password,
                            Status =z.Status
