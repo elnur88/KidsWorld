@@ -21,13 +21,14 @@ namespace KidsWorld.Models.Class
         [StringLength(100)]
         public string FullAdress { get; set; }
         [Column(TypeName = "NVarchar")]
-        [StringLength(15)]
+        [StringLength(15, ErrorMessage = "15 simvoldan artiq girmek olmaz")]
         public string UserName { get; set; }
         [Column(TypeName = "NVarchar")]
         [StringLength(50)]
         public string Email { get; set; }
         [Column(TypeName = "Varchar")]
-        [StringLength(30)]
+        [StringLength(30, ErrorMessage = "Şifrə 30 simvoldan artiq girmek olmaz")]
+        [Required(ErrorMessage ="Şifrə boş saxlanıla bilməz")]
         public string Password { get; set; }
         public int Role { get; set; }
         public ICollection<GoodsInfo> GoodsInfos { get; set; }

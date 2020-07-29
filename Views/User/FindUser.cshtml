@@ -24,6 +24,7 @@
     @Html.Label("sifre")
     <br />
     @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Password, "", new { @style = "color:red" })
     <br />
     @Html.HiddenFor(x => x.User_Id)
     <br />

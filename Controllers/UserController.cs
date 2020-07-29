@@ -50,7 +50,10 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult AddUser(User k)
         {
-            
+            if (!ModelState.IsValid)
+            {
+                return View("AddUser");
+            }
             k.RecordDate = DateTime.Now;
             k.User_Id = 1;
             c.Users.Add(k);
@@ -74,6 +77,10 @@ namespace KidsWorld.Controllers
         }
         public ActionResult EditUser(User k)
         {
+            if(!ModelState.IsValid)
+            {
+                return View("FindUser");
+            }
             var usr = c.Users.Find(k.UserId);
             usr.FullName = k.FullName;
             usr.FullAdress = k.FullAdress;

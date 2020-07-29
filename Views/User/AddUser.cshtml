@@ -17,7 +17,7 @@
     <br />
     @Html.Label("Qeydiyata alan")
     <br />
-    @Html.DropDownListFor(x => x.User_Id,(List<SelectListItem>)ViewBag.dgr1 ,
+    @Html.DropDownListFor(x => x.User_Id, (List<SelectListItem>)ViewBag.dgr1,
                                new { @class = "form-control" })
     <br />
     @Html.Label("Email")
@@ -27,11 +27,12 @@
     @Html.Label("istifadeci adi")
     <br />
     @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.UserName, "", new { @style = "color:red" })
     <br />
     @Html.Label("parol")
     <br />
     @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-
+    @Html.ValidationMessageFor(x => x.Password, "", new { @style = "color:red" })
     <br />
     <button class="btn btn-primary">elave et</button>
 
