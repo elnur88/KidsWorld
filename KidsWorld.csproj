@@ -1026,6 +1026,7 @@
     <Content Include="Views\GoodsInfo\AddGoodsInfo.cshtml" />
     <Content Include="Views\GoodsInfo\FindGoodsInfo.cshtml" />
     <Content Include="Views\GoodsInfo\Index.cshtml" />
+    <Content Include="Views\Home\AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

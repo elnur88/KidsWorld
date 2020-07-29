@@ -1,8 +1,8 @@
 ﻿using KidsWorld.Models.Class;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 
@@ -55,6 +55,28 @@ namespace KidsWorld.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult FindGoodsInfo()
+        {
+            List<SelectListItem> usercombo = (from x in c.Users.Where(x => x.Status == 0).ToList()
+                                              select new SelectListItem
+                                              {
+                                                  Text = x.UserName,
+                                                  Value = x.UserId.ToString()
+                                              }).ToList();
+            ViewBag.dgr3 = usercombo;
+
+            List<SelectListItem> categorycombo = (from x in c.Categories.Where(x => x.Status == 0).ToList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.Name,
+                                                      Value = x.CategoryId.ToString()
+                                                  }).ToList();
+            ViewBag.dgr4 = categorycombo;
+
+
+            return View();
+        }
         public ActionResult FindGoodsInfo(int id)
         {
             var usr = c.GoodsInfos.Find(id);
@@ -72,13 +94,13 @@ namespace KidsWorld.Controllers
         {
             var usr = c.GoodsInfos.Find(k.GoodsInfoId);
             usr.Name = k.Name;
-            usr.PurchasePrice = k.PurchasePrice;
-            usr.SalePrice = k.SalePrice;
+            usr.Description = k.Description;
             usr.Size = k.Size;
             usr.Color = k.Color;
             usr.Count = k.Count;
+            usr.PurchasePrice = k.PurchasePrice;
+            usr.SalePrice = k.SalePrice;
             usr.Barcode = k.Barcode;
-            usr.Description = k.Description;
             c.SaveChanges();
             return RedirectToAction("Index");
         }
