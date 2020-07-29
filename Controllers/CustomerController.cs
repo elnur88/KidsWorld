@@ -15,7 +15,7 @@ namespace KidsWorld.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var dgr = c.Customers.ToList();
+            var dgr = c.Customers.Where(x => x.Status == 0).ToList();
             return View(dgr);
         }
         [HttpGet]
@@ -26,6 +26,7 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult AddCustomer(Customer k)
         {
+            k.RecordDate = DateTime.Now;
             c.Customers.Add(k);
             c.SaveChanges();
             return RedirectToAction("Index");
@@ -35,8 +36,11 @@ namespace KidsWorld.Controllers
             var usr = c.Customers.Find(id);
             return View("FindCustomer", usr);
         }
-        public ActionResult DeleteCustomer(int id)
+
+        public ActionResult DeleteCustomer(Customer k)
         {
+            var usr = c.Customers.Find(k.CustomerId);
+            usr.Status = 1;
             c.SaveChanges();
             return RedirectToAction("Index");
         }
