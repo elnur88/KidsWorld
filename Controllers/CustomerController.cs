@@ -37,9 +37,9 @@ namespace KidsWorld.Controllers
             return View("FindCustomer", usr);
         }
 
-        public ActionResult DeleteCustomer(Customer k)
+        public ActionResult DeleteCustomer(int id)
         {
-            var usr = c.Customers.Find(k.CustomerId);
+            var usr = c.Customers.Find(id);
             usr.Status = 1;
             c.SaveChanges();
             return RedirectToAction("Index");
