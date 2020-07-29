@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace KidsWorld.Models.Class
     {
         [Key]
         public int CustomerId { get; set; }
+        [DefaultValue(0)]
+        public int Status { get; set; }
+        public DateTime RecordDate { get; set; }
         [Column(TypeName = "NVarchar")]
         [StringLength(35)]
         public string FullName { get; set; }
