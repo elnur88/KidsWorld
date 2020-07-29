@@ -15,7 +15,7 @@ namespace KidsWorld.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var dgr = c.Customers.Where(x => x.Status == 0).ToList();
+            var dgr = c.Customers.ToList();
             return View(dgr);
         }
     }
