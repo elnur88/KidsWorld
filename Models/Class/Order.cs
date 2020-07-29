@@ -31,6 +31,8 @@ namespace KidsWorld.Models.Class
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string Email { get; set; }
+        [Column(TypeName = "Varchar")]
+        [StringLength(13)]
         public string Barcode { get; set; }
         public virtual User Users { get; set; }
     }

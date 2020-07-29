@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,10 @@ namespace KidsWorld.Models.Class
         public int Status { get; set; }
         public decimal TotalPrice { get; set; }
         public int FakturaId { get; set; }
+        public int Count { get; set; }
+        [Column(TypeName = "Varchar")]
+        [StringLength(13)]
+        public string Barcode { get; set; }
         public virtual User Users { get; set; }
     }
 }

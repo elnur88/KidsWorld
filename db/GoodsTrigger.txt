@@ -1,0 +1,21 @@
+﻿Create Trigger GoodsTrigger on GoodsInfoes
+ After Insert
+AS
+BEGIN
+
+Merge Goods
+Using (
+ SELECT
+  i.Count,
+  i.SalePrice,
+  i.Barcode
+ from inserted i
+) MergeData ON Goods.Barcode = MergeData.Barcode
+ WHEN MATCHED THEN
+ UPDATE SET
+  Goods.Count = Goods.Count+MergeData.Count,
+  Goods.SalePrice = MergeData.SalePrice
+ WHEN NOT MATCHED BY TARGET THEN
+ INSERT VALUES (Count, SalePrice, Barcode);
+END
+GO

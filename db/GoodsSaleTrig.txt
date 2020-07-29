@@ -1,0 +1,10 @@
+﻿Create Trigger GoodSaleTrig on Sales
+ After Insert
+AS
+BEGIN
+Declare @Barcode  Varchar (13)
+Declare @Count int
+Select @Barcode=Barcode,@Count=Count from inserted
+Update Goods Set Count=Count-@Count where Barcode=@Barcode;
+END
+GO
