@@ -1,0 +1,43 @@
+﻿@model KidsWorld.Models.Class.Customer
+@{
+    ViewBag.Title = "AddCustomer";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>AddCustomer</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.Label("Ad")
+    <br />
+    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Ad soyad ata" })
+    <br />
+    @Html.Label("Seher")
+    <br />
+    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+    <br />
+    @Html.Label("Poct Indeksi")
+    <br />
+    @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mobil")
+    <br />
+    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+    <br />
+    @Html.Label("Unvan")
+    <br />
+    @Html.TextBoxFor(x => x.Adress, new { @class = "form-control" })
+    <br />
+    @Html.Label("Email")
+    <br />
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    <br />
+    @Html.Label("Parol")
+    <br />
+    @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+    <br />
+    @Html.HiddenFor(x => x.CustomerId)
+
+    <br />
+    <button class="btn btn-primary">Elave et</button>
+
+</form>
