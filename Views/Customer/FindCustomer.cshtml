@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>FindCustomer</h2>
+    <h2>Müştəri redaktə</h2>
 <br />
 @using (Html.BeginForm("EditCustomer", "Customer", FormMethod.Post))
 {
@@ -40,7 +40,7 @@
     @Html.HiddenFor(x => x.CustomerId)
 
 
-    <button class="btn btn-warning">Redakte et</button>
+    <button class="btn btn-warning">Redaktə et</button>
 
 </div>
 }
