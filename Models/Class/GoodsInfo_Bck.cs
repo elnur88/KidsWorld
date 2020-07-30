@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -8,9 +7,10 @@ using System.Web;
 
 namespace KidsWorld.Models.Class
 {
-    public class GoodsInfo
+    public class GoodsInfo_Bck
     {
         [Key]
+        public int ID { get; set; }
         public int GoodsInfoId { get; set; }
         [Column(TypeName = "NVarchar")]
         [StringLength(20)]
@@ -32,13 +32,9 @@ namespace KidsWorld.Models.Class
         [Column(TypeName = "Varchar")]
         [StringLength(13)]
         public string Barcode { get; set; }
-        [DefaultValue(0)]
-        public int State { get; set; }
 
-        public virtual GoodsPhoto GoodsPhoto { get; set; }
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
         public int UserId { get; set; }
-        public virtual User User { get; set; }
+
     }
 }

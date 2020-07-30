@@ -8,9 +8,10 @@ using System.Web;
 
 namespace KidsWorld.Models.Class
 {
-    public class Order
+    public class Order_Bck
     {
         [Key]
+        public int ID { get; set; }
         public int OrderId { get; set; }
         public int FakturaId { get; set; }
         [DefaultValue(0)]
@@ -36,8 +37,7 @@ namespace KidsWorld.Models.Class
         [Column(TypeName = "Varchar")]
         [StringLength(13)]
         public string Barcode { get; set; }
-        [DefaultValue(0)]
-        public int State { get; set; }
-        public virtual User Users { get; set; }
+        public int UserId { get; set; }
+
     }
 }

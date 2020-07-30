@@ -17,5 +17,11 @@ namespace KidsWorld.Models.Class
         public DbSet<Order> Orders { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Expense_Bck> Expense_Bck { get; set; }
+        public DbSet<Goods_Bck> Goods_Bck { get; set; }
+        public DbSet<GoodsInfo_Bck> GoodsInfo_Bck { get; set; }
+        public DbSet<Order_Bck> Order_Bck { get; set; }
+        public DbSet<Sale_Bck> Sale_Bck { get; set; }
+        public DbSet<User_Bck> User_Bck { get; set; }
     }
 }
