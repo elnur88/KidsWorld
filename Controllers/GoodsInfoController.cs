@@ -49,7 +49,7 @@ namespace KidsWorld.Controllers
             
             k.RecordDate = DateTime.Now ;
             k.Status = 0;
-            k.GoodsPhoto.PhotoId = 1;
+            //k.GoodsPhoto.PhotoId = 1;
             c.GoodsInfos.Add(k);
             c.SaveChanges();
             return RedirectToAction("Index");

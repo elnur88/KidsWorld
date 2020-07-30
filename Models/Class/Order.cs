@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace KidsWorld.Models.Class
         [Key]
         public int OrderId { get; set; }
         public int FakturaId { get; set; }
+        [DefaultValue(0)]
         public int Status { get; set; }
         public DateTime RecordDate { get; set; }
         public DateTime OrderDate { get; set; }

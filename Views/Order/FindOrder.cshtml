@@ -1,0 +1,57 @@
+﻿@model KidsWorld.Models.Class.Order
+@{
+    ViewBag.Title = "FindOrder";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Sifarişi redaktə et</h2>
+<br />
+@using (Html.BeginForm("EditOrder", "Order", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("Say")
+    <br />
+    @Html.TextBoxFor(x => x.Count, new { @class = "form-control" })
+    <br />
+    @Html.Label("Satış qiyməti")
+    <br />
+    @Html.TextBoxFor(x => x.SalePrice, new { @class = "form-control" })
+    <br />
+    @Html.Label("Toplam məbləğ")
+    <br />
+    @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şəhər")
+    <br />
+    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+    <br />
+    @Html.Label("Poşt indeksi")
+    <br />
+    @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mobil")
+    <br />
+    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+    <br />
+    @Html.Label("Ünvan")
+    <br />
+    @Html.TextBoxFor(x => x.Adress, new { @class = "form-control" })
+    <br />
+    @Html.Label("Email")
+    <br />
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    <br />
+    @Html.Label("Barkod")
+    <br />
+    @Html.TextBoxFor(x => x.Barcode, new { @class = "form-control" })
+    <br />
+    @Html.HiddenFor(x => x.OrderId)
+    <br />
+    @Html.HiddenFor(x => x.FakturaId)
+    <br />
+
+    <button class="btn btn-warning">Redaktə et</button>
+    <br />
+
+</div>
+}
