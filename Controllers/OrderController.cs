@@ -33,10 +33,10 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult AddOrder(Order k)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("AddOrder");
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View("AddOrder");
+            //}
             k.RecordDate = DateTime.Now;
             k.OrderDate = DateTime.Now;
             k.Status = 0;
