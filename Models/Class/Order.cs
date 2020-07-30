@@ -16,7 +16,6 @@ namespace KidsWorld.Models.Class
         [DefaultValue(0)]
         public int Status { get; set; }
         public DateTime RecordDate { get; set; }
-        public DateTime OrderDate { get; set; }
         public int Count { get; set; }
         public decimal SalePrice { get; set; }
         public decimal TotalPrice { get; set; }

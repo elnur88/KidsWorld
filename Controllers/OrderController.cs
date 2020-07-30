@@ -38,7 +38,6 @@ namespace KidsWorld.Controllers
             //    return View("AddOrder");
             //}
             k.RecordDate = DateTime.Now;
-            k.OrderDate = DateTime.Now;
             k.Status = 0;
             c.Orders.Add(k);
             c.SaveChanges();

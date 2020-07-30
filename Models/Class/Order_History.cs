@@ -8,7 +8,7 @@ using System.Web;
 
 namespace KidsWorld.Models.Class
 {
-    public class Order_Bck
+    public class Order_History
     {
         [Key]
         public int ID { get; set; }
@@ -17,7 +17,6 @@ namespace KidsWorld.Models.Class
         [DefaultValue(0)]
         public int Status { get; set; }
         public DateTime RecordDate { get; set; }
-        public DateTime OrderDate { get; set; }
         public int Count { get; set; }
         public decimal SalePrice { get; set; }
         public decimal TotalPrice { get; set; }

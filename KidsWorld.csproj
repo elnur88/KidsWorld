@@ -193,7 +193,7 @@
     <Compile Include="Models\Class\GoodsInfo_Bck.cs" />
     <Compile Include="Models\Class\GoodsInfo.cs" />
     <Compile Include="Models\Class\GoodsPhoto.cs" />
-    <Compile Include="Models\Class\Order_Bck.cs" />
+    <Compile Include="Models\Class\Order_History.cs" />
     <Compile Include="Models\Class\Order.cs" />
     <Compile Include="Models\Class\Sale_Bck.cs" />
     <Compile Include="Models\Class\Sale.cs" />
