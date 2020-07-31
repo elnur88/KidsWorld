@@ -13,6 +13,14 @@ namespace KidsWorld.Controllers
         // GET: User
         Context c = new Context();
         [Authorize]
+
+        #region Check Email Exists or not in DB  
+        public bool IsUserNameExists(string UserName1)
+        {
+            var IsCheck = c.Users.Where(email => email.UserName == UserName1).FirstOrDefault();
+            return IsCheck != null;
+        }
+        #endregion
         public ActionResult Index()
         {
             
@@ -39,6 +47,7 @@ namespace KidsWorld.Controllers
         [HttpGet]
         public ActionResult AddUser()
         {
+
             List<SelectListItem>  usercombo = (from x in c.Users.Where(x=>x.Status==0).ToList()
                                          select new SelectListItem
                                          {
@@ -55,7 +64,23 @@ namespace KidsWorld.Controllers
             {
                 return View("AddUser");
             }
+            var IsExists = IsUserNameExists(k.UserName);
+            if (IsExists)
+            {
+                ModelState.AddModelError("UserNameExist","İstifadəçi adı artıq mövcuddur");
+                List<SelectListItem> usercombo = (from x in c.Users.Where(x => x.Status == 0).ToList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.UserName,
+                                                      Value = x.UserId.ToString()
+                                                  }).ToList();
+                ViewBag.dgr1 = usercombo;
+                return View("AddUser");
+            }
+            
             k.RecordDate = DateTime.Now;
+            k.EmailVerification = false;
+            k.Password = KidsWorld.Models.Class.encryptPassword.textToEncrypt(k.Password);
             k.User_Id = 1;
             c.Users.Add(k);
             c.SaveChanges();
