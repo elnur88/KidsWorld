@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<KidsWorld.Models.Class.Order>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "RemoveIndex";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header"><h4>Sifarişlər</h4></div>
+            <div class="card-header"><h4>Silinmiş sifarişlər</h4></div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-bordered">
@@ -25,35 +25,30 @@
                                 <th>Ünvan</th>
                                 <th>Email</th>
                                 <th>Barkod</th>
-                                <th>Sil</th>
-                                <th>Redaktə et</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var k in Model)
                             {
-                            <tr>
-                                <td>@k.OrderId</td>
-                                <td>@k.FakturaId</td>
-                                <td>@k.RecordDate</td>
-                                <td>@k.Count</td>
-                                <td>@k.SalePrice</td>
-                                <td>@k.TotalPrice</td>
-                                <td>@k.City </td>
-                                <td>@k.ZipCode</td>
-                                <td>@k.Phone</td>
-                                <td>@k.Adress</td>
-                                <td>@k.Email</td>
-                                <td>@k.Barcode</td>
-                                <td><a href="/Order/DeleteOrder/@k.OrderId" class="btn btn-success">Sil</a></td>
-                                <td><a href="/Order/TesdiqOrder/@k.OrderId" class="btn btn-success">Təsdiqlə</a></td>
-                                <td><a href="/Order/FindOrder/@k.OrderId" class="btn btn-success">Redaktə et</a></td>
-                            </tr>
+                                <tr>
+                                    <td>@k.OrderId</td>
+                                    <td>@k.FakturaId</td>
+                                    <td>@k.RecordDate</td>
+                                    <td>@k.Count</td>
+                                    <td>@k.SalePrice</td>
+                                    <td>@k.TotalPrice</td>
+                                    <td>@k.City </td>
+                                    <td>@k.ZipCode</td>
+                                    <td>@k.Phone</td>
+                                    <td>@k.Adress</td>
+                                    <td>@k.Email</td>
+                                    <td>@k.Barcode</td>
+                                </tr>
                             }
                             </tfoot>
                     </table>
-                    <br />
-                    <a href="/Order/AddOrder/" class="btn btn-primary">Əlavə et</a>
+
+
                     <br />
                     <br />
                 </div>
@@ -81,3 +76,4 @@
 
     });
 </script>
+

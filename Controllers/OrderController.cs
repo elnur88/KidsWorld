@@ -18,6 +18,23 @@ namespace KidsWorld.Controllers
             var dgr = c.Orders.Where(x => x.Status == 0).ToList();
             return View(dgr);
         }
+
+        public ActionResult TesdiqIndex()
+        {
+            var dgr = c.Orders.Where(x => x.Status == 2).ToList();
+            return View(dgr);
+        }
+        public ActionResult RemoveIndex()
+        {
+            var dgr = c.Orders.Where(x => x.Status == 1).ToList();
+            return View(dgr);
+        }
+
+        public ActionResult SaleOrderIndex()
+        {
+            var dgr = c.Orders.Where(x => x.Status == 3).ToList();
+            return View(dgr);
+        }
         [HttpGet]
         public ActionResult AddOrder()
         {
@@ -55,6 +72,22 @@ namespace KidsWorld.Controllers
             usr.Status = 1;
             c.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult TesdiqOrder(int id)
+        {
+            var usr = c.Orders.Find(id);
+            usr.Status = 2;
+            c.SaveChanges();
+            return RedirectToAction("TesdiqIndex");
+        }
+
+        public ActionResult SaleOrder(int id)
+        {
+            var usr = c.Orders.Find(id);
+            usr.Status = 3;
+            c.SaveChanges();
+            return RedirectToAction("SaleOrderIndex");
         }
 
         public ActionResult EditOrder(Order k)

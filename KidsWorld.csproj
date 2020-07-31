@@ -1087,6 +1087,9 @@
     <Content Include="Views\Order\FindOrder.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\AddOrder.cshtml" />
+    <Content Include="Views\Order\TesdiqIndex.cshtml" />
+    <Content Include="Views\Order\RemoveIndex.cshtml" />
+    <Content Include="Views\Order\SaleOrderIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
