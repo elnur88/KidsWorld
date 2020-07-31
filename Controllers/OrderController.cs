@@ -73,6 +73,7 @@ namespace KidsWorld.Controllers
             usr.Adress = k.Adress;
             usr.Email = k.Email;
             usr.Barcode = k.Barcode;
+            usr.State = 1;
             c.SaveChanges();
             return RedirectToAction("Index");
         }

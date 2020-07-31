@@ -18,6 +18,9 @@ INSERT INTO Order_History
   OLD.City,OLD.ZipCode,
   OLD.Phone,OLD.Adress,
   OLD.Email,OLD.Barcode,OLD.UserId 
-      FROM Inserted OLD;  
+        FROM
+        deleted AS OLD ;  
 
 END
+
+
