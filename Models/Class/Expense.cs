@@ -20,6 +20,8 @@ namespace KidsWorld.Models.Class
         public decimal Amount { get; set; }
         [DefaultValue(0)]
         public int State { get; set; }
+        [DefaultValue(1)]
+        public int UserId { get; set; }
         public virtual User Users { get; set; }
     }
 }

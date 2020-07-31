@@ -209,6 +209,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="db\GoodsSaleTrig.txt" />
     <Content Include="db\GoodsTrigger.txt" />
+    <Content Include="db\OderHisTrigger.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

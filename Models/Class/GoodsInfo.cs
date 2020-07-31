@@ -34,7 +34,8 @@ namespace KidsWorld.Models.Class
         public string Barcode { get; set; }
         [DefaultValue(0)]
         public int State { get; set; }
-
+        [DefaultValue(1)]
+        public int GPhotoId { get; set; }
         public virtual GoodsPhoto GoodsPhoto { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }

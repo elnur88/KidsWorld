@@ -23,6 +23,8 @@ namespace KidsWorld.Models.Class
         [StringLength(20)]
         public string SubCategoryName { get; set; }
         public int SubId { get; set; }
+        [DefaultValue(1)]
+        public int UserId { get; set; }
         public virtual User User { get; set; }
     }
 }

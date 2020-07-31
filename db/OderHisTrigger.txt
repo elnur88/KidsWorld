@@ -1,0 +1,23 @@
+﻿CREATE TRIGGER HISTORY_ORDER_UPDATE
+ON Orders
+AFTER UPDATE AS
+BEGIN
+INSERT INTO Order_History
+ ( OrderId,
+   FakturaId,Status,
+   RecordDate,Count,
+   SalePrice,TotalPrice,
+   City,ZipCode,
+   Phone,Adress,
+   Email,Barcode,
+   UserId)   
+ SELECT OLD.OrderId,
+  OLD.FakturaId,OLD.Status, 
+  OLD.RecordDate,OLD.Count,
+  OLD.SalePrice,OLD.TotalPrice,
+  OLD.City,OLD.ZipCode,
+  OLD.Phone,OLD.Adress,
+  OLD.Email,OLD.Barcode,OLD.UserId 
+      FROM Inserted OLD;  
+
+END

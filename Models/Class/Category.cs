@@ -25,6 +25,8 @@ namespace KidsWorld.Models.Class
         public int SubId { get; set; }
         [DefaultValue(0)]
         public int State { get; set; }
+
+
         public virtual User User { get; set; }
 
         public ICollection<GoodsInfo> GoodsInfos { get; set; }
