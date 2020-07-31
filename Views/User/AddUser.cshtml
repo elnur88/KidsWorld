@@ -28,6 +28,7 @@
     <br />
     @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.UserName, "", new { @style = "color:red" })
+    @Html.ValidationMessage("UserNameExist", new { @style = "color:red" })
     <br />
     @Html.Label("parol")
     <br />

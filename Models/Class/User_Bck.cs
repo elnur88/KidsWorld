@@ -29,7 +29,7 @@ namespace KidsWorld.Models.Class
         [StringLength(50)]
         public string Email { get; set; }
         [Column(TypeName = "Varchar")]
-        [StringLength(30)]
+        [StringLength(250)]
         public string Password { get; set; }
         public int Role { get; set; }
    

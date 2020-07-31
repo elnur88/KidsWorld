@@ -186,6 +186,7 @@
     <Compile Include="Models\Class\Category.cs" />
     <Compile Include="Models\Class\Context.cs" />
     <Compile Include="Models\Class\Customer.cs" />
+    <Compile Include="Models\Class\encryptPassword.cs" />
     <Compile Include="Models\Class\Expense_Bck.cs" />
     <Compile Include="Models\Class\Expense.cs" />
     <Compile Include="Models\Class\Goods_Bck.cs" />
