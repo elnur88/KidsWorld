@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
@@ -14,6 +16,30 @@ namespace KidsWorld.Controllers
         Context c = new Context();
         [Authorize]
 
+        public void SendEmailToUser(string emailId, string activationCode)
+        {
+            MailMessage mail = new MailMessage();
+            var GenarateUserVerificationLink = "/Login/EnterLogin/" + activationCode;
+            var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, GenarateUserVerificationLink);
+            mail.To.Add(emailId);
+            mail.From = new MailAddress("eliyevelnur88@gmail.com");
+            mail.Subject = "Registration Completed-Demo";
+            string Body = "<br/> Your registration completed succesfully." +
+                           "<br/> please click on the below link for account verification" +
+                           "<br/><br/><a href=" + link + ">" + link + "</a>";
+            mail.Body = Body;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.mail.ru";
+            smtp.Port = 465;
+
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = new System.Net.NetworkCredential("elnur_muh@mail.ru", "Elnur12345"); // Enter seders User name and password  
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+
+            
+        }
         #region Check Email Exists or not in DB  
         public bool IsUserNameExists(string UserName1)
         {
@@ -80,10 +106,13 @@ namespace KidsWorld.Controllers
             
             k.RecordDate = DateTime.Now;
             k.EmailVerification = false;
+            Guid guid = Guid.NewGuid();
+            k.ActivetionCode = guid.ToString();
             k.Password = KidsWorld.Models.Class.encryptPassword.textToEncrypt(k.Password);
             k.User_Id = 1;
             c.Users.Add(k);
             c.SaveChanges();
+            //SendEmailToUser(k.Email,k.ActivetionCode);
             return RedirectToAction("Index");
         }
 

@@ -20,7 +20,9 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult EnterLogin(User u)
         {
-            var dgr = c.Users.Where(x => x.UserName == u.UserName && x.Password == u.Password).FirstOrDefault();
+            var _Password = KidsWorld.Models.Class.encryptPassword.textToEncrypt(u.Password);
+
+            var dgr = c.Users.Where(x => x.UserName == u.UserName && x.Password == _Password).FirstOrDefault();
             if(dgr!=null)
             {
                 FormsAuthentication.SetAuthCookie(dgr.UserId.ToString(), false);
