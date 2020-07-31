@@ -69,6 +69,7 @@ namespace KidsWorld.Controllers
         public ActionResult DeleteOrder(int id)
         {
             var usr = c.Orders.Find(id);
+            usr.RecordDate = DateTime.Now;
             usr.Status = 1;
             c.SaveChanges();
             return RedirectToAction("Index");
@@ -77,6 +78,7 @@ namespace KidsWorld.Controllers
         public ActionResult TesdiqOrder(int id)
         {
             var usr = c.Orders.Find(id);
+            usr.RecordDate = DateTime.Now;
             usr.Status = 2;
             c.SaveChanges();
             return RedirectToAction("TesdiqIndex");
@@ -85,6 +87,7 @@ namespace KidsWorld.Controllers
         public ActionResult SaleOrder(int id)
         {
             var usr = c.Orders.Find(id);
+            usr.RecordDate = DateTime.Now;
             usr.Status = 3;
             c.SaveChanges();
             return RedirectToAction("SaleOrderIndex");
@@ -97,6 +100,7 @@ namespace KidsWorld.Controllers
                 return View("FindOrder");
             }
             var usr = c.Orders.Find(k.OrderId);
+            usr.RecordDate = DateTime.Now;
             usr.Count = k.Count;
             usr.SalePrice = k.SalePrice;
             usr.TotalPrice = k.TotalPrice;

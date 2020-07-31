@@ -1,0 +1,23 @@
+﻿CREATE TRIGGER GoodsInfoTrigger
+ON GoodsInfoes
+AFTER UPDATE AS
+BEGIN
+INSERT INTO GoodsInfo_Bck
+ ( GoodsInfoId,
+   Name,Status,
+   RecordDate,Description,
+   Size,Color,
+   Count,PurchasePrice,
+   SalePrice,Barcode,
+   CategoryId,UserId)   
+ SELECT OLD.GoodsInfoId,
+  OLD.Name,OLD.Status, 
+  OLD.RecordDate,OLD.Description,
+  OLD.Size,OLD.Color,
+  OLD.Count,OLD.PurchasePrice,
+  OLD.SalePrice,OLD.Barcode,
+  OLD.CategoryId,OLD.UserId
+        FROM
+        deleted AS OLD ;  
+
+END

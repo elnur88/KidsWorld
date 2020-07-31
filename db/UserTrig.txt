@@ -1,0 +1,21 @@
+﻿CREATE TRIGGER UserTrig_UPDATE
+ON Users
+AFTER UPDATE AS
+BEGIN
+INSERT INTO User_Bck
+ ( UserId,
+   RecordDate,Status,
+   User_Id,FullName,
+   FullAdress,UserName,
+   Email,Password,
+   Role)   
+ SELECT OLD.UserId,
+  OLD.RecordDate,OLD.Status, 
+  OLD.User_Id,OLD.FullName,
+  OLD.FullAdress,OLD.UserName,
+  OLD.Email,OLD.Password,
+  OLD.Role
+        FROM
+        deleted AS OLD ;  
+
+END

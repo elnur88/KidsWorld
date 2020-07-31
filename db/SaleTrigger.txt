@@ -1,0 +1,19 @@
+﻿CREATE TRIGGER SaleTrigger
+ON Sales
+AFTER UPDATE AS
+BEGIN
+INSERT INTO Sale_Bck
+ ( SaleId,
+   RecordDate,Status,
+   TotalPrice,FakturaId,
+   Count,Barcode,
+   UserId)   
+ SELECT OLD.SaleId,
+  OLD.RecordDate,OLD.Status, 
+  OLD.TotalPrice,OLD.FakturaId,
+  OLD.Count,OLD.Barcode,
+  OLD.UserId
+        FROM
+        deleted AS OLD ;  
+
+END

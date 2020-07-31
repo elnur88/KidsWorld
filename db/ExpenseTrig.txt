@@ -1,0 +1,17 @@
+﻿CREATE TRIGGER ExpenseTrig
+ON Expenses
+AFTER UPDATE AS
+BEGIN
+INSERT INTO Expense_Bck
+ ( ExpenseId,
+   RecordDate,Status,
+   Description,Amount,
+   UserId)   
+ SELECT OLD.ExpenseId,
+  OLD.RecordDate,OLD.Status, 
+  OLD.Description,OLD.Amount,
+  OLD.UserId
+        FROM
+        deleted AS OLD ;  
+
+END
