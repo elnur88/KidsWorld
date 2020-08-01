@@ -16,27 +16,65 @@ namespace KidsWorld.Controllers
         Context c = new Context();
         [Authorize]
 
-        public void SendEmailToUser(string emailId, string activationCode)
+        public void SendEmailToUser(string emailId, string activationCode, string otpp, bool tipp)
         {
-            MailMessage mail = new MailMessage();
-            var GenarateUserVerificationLink = "/User/UserVerification/" + activationCode;
+            var GenarateUserVerificationLink = "";
+            string Body = "";
+            if (tipp)
+            {
+                GenarateUserVerificationLink = "/User/UserVerification/" + activationCode;
+            }
+            else
+            {
+                GenarateUserVerificationLink = "/User/ChangePassword/" + activationCode;
+            }
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, GenarateUserVerificationLink);
-            mail.To.Add(emailId);
-            mail.From = new MailAddress("eliyevelnur88@gmail.com");
-            mail.Subject = "Registration Completed-Demo";
-            string Body = "<br/> Your registration completed succesfully." +
-                           "<br/> please click on the below link for account verification" +
-                           "<br/><br/><a href=" + link + ">" + link + "</a>";
-            mail.Body = Body;
-            mail.IsBodyHtml = true;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.mail.ru";
-            smtp.Port = 465;
+            if (tipp)
+            {
+                Body = "<br/> Your registration completed succesfully." +
+                               "<br/> please click on the below link for account verification" +
+                               "<br/><br/><a href=" + link + ">" + link + "</a>";
+            }
+            else
+            {
+                Body = "<br/> Your registration completed succesfully." +
+                              "<br/> please click on the below link for account verification" +
+                              "<br/><br/><a href=" + link + ">" + link + "</a>";
+            }
 
-            smtp.UseDefaultCredentials = true;
-            smtp.Credentials = new System.Net.NetworkCredential("elnur_muh@mail.ru", "Elnur12345"); // Enter seders User name and password  
-            smtp.EnableSsl = true;
-            smtp.Send(mail);
+
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.To.Add(emailId);
+                mail.From = new MailAddress("kingsworld41@gmail.com");
+                mail.From = new MailAddress("email@gmail.com");
+                mail.To.Add(emailId);
+                mail.Subject = "Registration Completed-Demo";
+                mail.Body = Body;
+                mail.IsBodyHtml = true;
+
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential("kingsworld41@gmail.com", "kings@123");
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.EnableSsl = true;
+                    //smtp.Credentials = null;
+                    smtp.Timeout = 30000;
+                    try
+                    {
+
+                        smtp.Send(mail);
+                    }
+                    catch (SmtpException e)
+                    {
+                        ViewBag.Message = "Invalid Request...Email not verify";
+                    }
+                   
+                }
+            }
+            
+            
 
             
         }
@@ -47,6 +85,11 @@ namespace KidsWorld.Controllers
             return IsCheck != null;
         }
         #endregion
+        public bool IsEmailExists(string Email1)
+        {
+            var IsCheck = c.Users.Where(email => email.Email == Email1).FirstOrDefault();
+            return IsCheck != null;
+        }
         public ActionResult Index()
         {
             
@@ -112,7 +155,7 @@ namespace KidsWorld.Controllers
             k.User_Id = 1;
             c.Users.Add(k);
             c.SaveChanges();
-            //SendEmailToUser(k.Email,k.ActivetionCode);
+            SendEmailToUser(k.Email,k.ActivetionCode,"",true);
             return RedirectToAction("Index");
         }
 
@@ -169,5 +212,36 @@ namespace KidsWorld.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult RestPassword(User k)
+        {
+            var IsExists = IsEmailExists(k.Email);
+            if (!IsExists)
+            {
+                ModelState.AddModelError("EmailNotExists", "This email is not exists");
+                return View();
+            }
+            var objUsr = c.Users.Where(x => x.Email == k.Email).FirstOrDefault();
+
+            // Genrate OTP   
+            string OTP = KidsWorld.Models.Class.GenerateOtp.GeneratePassword();
+
+
+            objUsr.ActivetionCode = Guid.NewGuid().ToString();
+            objUsr.OTP = OTP;
+            c.Entry(objUsr).State = System.Data.Entity.EntityState.Modified;
+            c.SaveChanges();
+
+            SendEmailToUser(objUsr.Email, objUsr.ActivetionCode.ToString(), objUsr.OTP,false);
+            return View();
+        }
+
     }
+
+
+
 }
+
+
+
+

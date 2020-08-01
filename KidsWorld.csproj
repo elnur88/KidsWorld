@@ -195,6 +195,7 @@
     <Compile Include="Models\Class\encryptPassword.cs" />
     <Compile Include="Models\Class\Expense_Bck.cs" />
     <Compile Include="Models\Class\Expense.cs" />
+    <Compile Include="Models\Class\GeneratePassword.cs" />
     <Compile Include="Models\Class\Goods_Bck.cs" />
     <Compile Include="Models\Class\Goods.cs" />
     <Compile Include="Models\Class\GoodsInfo_Bck.cs" />
@@ -1029,6 +1030,7 @@
     <Content Include="Webx\ui-sweet-alert.html" />
     <Content Include="Webx\ui-typography.html" />
     <Content Include="Webx\widgets.html" />
+    <Content Include=".editorconfig" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1102,8 +1104,8 @@
     <Content Include="Views\Order\TesdiqIndex.cshtml" />
     <Content Include="Views\Order\RemoveIndex.cshtml" />
     <Content Include="Views\Order\SaleOrderIndex.cshtml" />
-    <Content Include="Views\Login\RestPassword.cshtml" />
     <Content Include="Views\User\UserVerification.cshtml" />
+    <Content Include="Views\User\RestPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
