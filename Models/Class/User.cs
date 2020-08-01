@@ -40,6 +40,7 @@ namespace KidsWorld.Models.Class
         [Column(TypeName = "Varchar")]
         [StringLength(4)]
         public string OTP { get; set; }
+        public bool Rememberme { get; set; }
         public ICollection<GoodsInfo> GoodsInfos { get; set; }
         public ICollection<Category> Categories { get; set; }
         public ICollection<Sale> Sales { get; set; }
