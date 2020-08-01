@@ -1102,6 +1102,8 @@
     <Content Include="Views\Order\TesdiqIndex.cshtml" />
     <Content Include="Views\Order\RemoveIndex.cshtml" />
     <Content Include="Views\Order\SaleOrderIndex.cshtml" />
+    <Content Include="Views\Login\RestPassword.cshtml" />
+    <Content Include="Views\User\UserVerification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

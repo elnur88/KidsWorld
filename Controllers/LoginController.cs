@@ -53,6 +53,18 @@ namespace KidsWorld.Controllers
             return View(dgr);
         }
 
+        public ActionResult RestPassword()
+        {
+            var userid1 = (string)Session["UserId"];
+            var dgr = c.Users.Where(x => x.UserName == userid1).FirstOrDefault();
+            return View(dgr);
+        }
+
+
+
+
+
+
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();

@@ -19,7 +19,7 @@ namespace KidsWorld.Controllers
         public void SendEmailToUser(string emailId, string activationCode)
         {
             MailMessage mail = new MailMessage();
-            var GenarateUserVerificationLink = "/Login/EnterLogin/" + activationCode;
+            var GenarateUserVerificationLink = "/User/UserVerification/" + activationCode;
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, GenarateUserVerificationLink);
             mail.To.Add(emailId);
             mail.From = new MailAddress("eliyevelnur88@gmail.com");
@@ -143,6 +143,29 @@ namespace KidsWorld.Controllers
             usr.Password = k.Password;
             c.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult UserVerification(string id)
+        {
+            bool Status = false;
+
+            c.Configuration.ValidateOnSaveEnabled = false; // Ignor to password confirmation   
+            var IsVerify = c.Users.Where(u => u.ActivetionCode == new Guid(id).ToString()).FirstOrDefault();
+
+            if (IsVerify != null)
+            {
+                IsVerify.EmailVerification = true;
+                c.SaveChanges();
+                ViewBag.Message = "Email Verification completed";
+                Status = true;
+            }
+            else
+            {
+                ViewBag.Message = "Invalid Request...Email not verify";
+                ViewBag.Status = false;
+            }
+
+            return View();
         }
 
 
