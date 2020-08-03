@@ -53,38 +53,39 @@
                     <br />
                     @using (Html.BeginForm("EnterLogin", "Login", FormMethod.Post))
                     {
-                        <div class="form-group">
-                            <label for="exampleInputUsername" class="sr-only">İstifadəçi adı</label>
-                            <div class="position-relative has-icon-right">
-                                <input type="text" name="UserName" class="form-control input-shadow" placeholder="İstifadəçi adını daxil et">
-                                <div class="form-control-position">
-                                    <i class="icon-user"></i>
-                                </div>
+                <h4>@Html.ValidationSummary(true, "", new { @class = "text-danger" })</h4>
+                    <div class="form-group">
+                        <label for="exampleInputUsername" class="sr-only">İstifadəçi adı</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" name="UserName" class="form-control input-shadow" placeholder="İstifadəçi adını daxil et">
+                            <div class="form-control-position">
+                                <i class="icon-user"></i>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword" class="sr-only">Şifrə</label>
-                            <div class="position-relative has-icon-right">
-                                <input type="password" name="Password" class="form-control input-shadow" placeholder="Şifrəni daxil et">
-                                <div class="form-control-position">
-                                    <i class="icon-lock"></i>
-                                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword" class="sr-only">Şifrə</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="password" name="Password" class="form-control input-shadow" placeholder="Şifrəni daxil et">
+                            <div class="form-control-position">
+                                <i class="icon-lock"></i>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-6">
-                                <div class="icheck-material-white">
-                                    <input type="checkbox" id="user-checkbox" checked="" />
-                                    <label for="user-checkbox">Xatırla</label>
-                                </div>
-                            </div>
-                            <div class="form-group col-6 text-right">
-                                <a href="authentication-reset-password.html">Şifrəni unuttun?</a>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <div class="icheck-material-white">
+                                <input type="checkbox" id="user-checkbox" checked="" />
+                                <label for="user-checkbox">Xatırla</label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-light btn-block">Daxil ol</button>
+                        <div class="form-group col-6 text-right">
+                            <a href="authentication-reset-password.html">Şifrəni unuttun?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-light btn-block">Daxil ol</button>
 
-                    }
+                }
                 </div>
             </div>
             <div class="card-footer text-center py-3">

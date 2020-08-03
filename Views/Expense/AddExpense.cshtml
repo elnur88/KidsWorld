@@ -15,7 +15,11 @@
     @Html.Label("Məbləğ")
     <br />
     @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
-
+    <br />
+    @Html.Label("Qeydiyata alan")
+    <br />
+    @Html.DropDownListFor(x => x.UserId, (List<SelectListItem>)ViewBag.dgr1,
+                               new { @class = "form-control" })
 
     <br />
     <button class="btn btn-primary">elave et</button>

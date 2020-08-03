@@ -13,6 +13,11 @@ namespace KidsWorld.Controllers
     {
         Context c = new Context();
         // GET: Login
+        public bool IsEmailVerifications(string _username)
+        {
+            var IsCheck = c.Users.Where(u => u.UserName == _username && u.EmailVerification==true).FirstOrDefault();
+            return IsCheck != null;
+        }
         public ActionResult EnterLogin()
         {
             return View();
@@ -25,6 +30,12 @@ namespace KidsWorld.Controllers
             var dgr = c.Users.Where(x => x.UserName == u.UserName && x.Password == _Password).FirstOrDefault();
             if(dgr!=null)
             {
+                var IsExists = IsEmailVerifications(u.UserName);
+                if (!IsExists)
+                {
+                    ModelState.AddModelError("", "Email aktiv edilmiyib zəhmət olmasa mail ə daxil olub aktiv edilmə əməliyatın tamamlayın");
+                    return View();
+                }
                 int timeout = u.Rememberme ? 60 : 5;
                 var ticket = new FormsAuthenticationTicket(dgr.UserId.ToString(), false, timeout);
                 //FormsAuthentication.SetAuthCookie(dgr.UserId.ToString(), false);
@@ -39,7 +50,7 @@ namespace KidsWorld.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Invalid Information... Please try again!");
+                ModelState.AddModelError("", "İstifadəçi adı və ya şifrə yalnışdır");
                 return View();
             }
           

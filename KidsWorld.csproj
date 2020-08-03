@@ -216,6 +216,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="db\DropDtabase.txt" />
     <Content Include="db\GoodsSaleTrig.txt" />
     <Content Include="db\GoodsTrigger.txt" />
     <Content Include="db\ExpenseTrig.txt" />
@@ -1103,6 +1104,8 @@
     <Content Include="Views\Order\TesdiqIndex.cshtml" />
     <Content Include="Views\Order\RemoveIndex.cshtml" />
     <Content Include="Views\Order\SaleOrderIndex.cshtml" />
+    <Content Include="Views\User\UserVerification.cshtml" />
+    <Content Include="Views\User\SendMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

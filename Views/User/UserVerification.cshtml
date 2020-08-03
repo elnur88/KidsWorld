@@ -1,17 +1,12 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "UserVerification";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-@{
-    ViewBag.Title = "UserVerification";
-}
 
 <h2>User Verification Process</h2>
 
 <div class="danger alert-danger">
-    <strong>Message..!!</strong>  @ViewBag.Message,  please click here to Login @Html.ActionLink("Login", "Login", "Register")
+    <strong>Mesaj..!!</strong>  @ViewBag.Message,  please click here to Login @Html.ActionLink("Login", "EnterLogin", "Login")
 </div>
-
-
-

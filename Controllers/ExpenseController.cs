@@ -21,6 +21,13 @@ namespace KidsWorld.Controllers
         [HttpGet]
         public ActionResult AddExpense()
         {
+            List<SelectListItem> usercombo = (from x in c.Users.Where(x => x.Status == 0).ToList()
+                                              select new SelectListItem
+                                              {
+                                                  Text = x.UserName,
+                                                  Value = x.UserId.ToString()
+                                              }).ToList();
+            ViewBag.dgr1 = usercombo;
             return View();
         }
         [HttpPost]
