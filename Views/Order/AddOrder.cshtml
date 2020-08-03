@@ -43,6 +43,11 @@
     <br />
     @Html.TextBoxFor(x => x.Barcode, new { @class = "form-control" })
     <br />
+    @Html.Label("Qeydiyata alan")
+    <br />
+    @Html.DropDownListFor(x => x.UserId, (List<SelectListItem>)ViewBag.dgr1,
+                               new { @class = "form-control" })
+    <br />
     @Html.HiddenFor(x => x.OrderId)
     <br />
     @Html.HiddenFor(x => x.FakturaId)
