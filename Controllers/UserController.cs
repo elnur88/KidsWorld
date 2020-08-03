@@ -41,7 +41,7 @@ namespace KidsWorld.Controllers
                               "<br/> please click on the below link for account verification" +
                               "<br/><br/><a href=" + link + ">" + link + "</a>";
             }
-
+            Body = "salam";
 
             using (MailMessage mail = new MailMessage())
             {
@@ -129,10 +129,10 @@ namespace KidsWorld.Controllers
         [HttpPost]
         public ActionResult AddUser(User k)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("AddUser");
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View("AddUser");
+            //}
             var IsExists = IsUserNameExists(k.UserName);
             if (IsExists)
             {
@@ -155,7 +155,7 @@ namespace KidsWorld.Controllers
             k.User_Id = 1;
             c.Users.Add(k);
             c.SaveChanges();
-            SendEmailToUser(k.Email,k.ActivetionCode,"",true);
+            //SendEmailToUser(k.Email, k.ActivetionCode, "", true);
             return RedirectToAction("Index");
         }
 
