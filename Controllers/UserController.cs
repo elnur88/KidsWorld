@@ -38,9 +38,7 @@ namespace KidsWorld.Controllers
             }
             else
             {
-                Body = "<br/> Your registration completed succesfully." +
-                              "<br/> please click on the below link for account verification" +
-                              "<br/><br/><a href=" + link + ">" + link + "</a>";
+                Body = "<br/> Sizin yeni şifrəniz  " + otpp + "</a>";
             }
             string host = "smtp.gmail.com";
             string username = "kingsworld41@gmail.com";
@@ -213,29 +211,41 @@ namespace KidsWorld.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult RestPassword()
+        {
 
+            
+            return View();
+        }
         [HttpPost]
         public ActionResult RestPassword(User k)
         {
             var IsExists = IsEmailExists(k.Email);
             if (!IsExists)
             {
-                ModelState.AddModelError("EmailNotExists", "This email is not exists");
+                ModelState.AddModelError("", "Qeyd olunan email qeydiyyatdan keçməyib");
                 return View();
             }
-            var objUsr = c.Users.Where(x => x.Email == k.Email).FirstOrDefault();
+            else
+            {
+                var objUsr = c.Users.Where(x => x.Email == k.Email).FirstOrDefault();
 
-            // Genrate OTP   
-            string OTP = KidsWorld.Models.Class.GenerateOtp.GeneratePassword();
+                // Genrate OTP   
+                string OTP = KidsWorld.Models.Class.GenerateOtp.GeneratePassword();
 
 
-            objUsr.ActivetionCode = Guid.NewGuid().ToString();
-            objUsr.OTP = OTP;
-            c.Entry(objUsr).State = System.Data.Entity.EntityState.Modified;
-            c.SaveChanges();
+                objUsr.ActivetionCode = Guid.NewGuid().ToString();
+                objUsr.OTP = OTP;
+                objUsr.Password = KidsWorld.Models.Class.encryptPassword.textToEncrypt(OTP);
+                c.Entry(objUsr).State = System.Data.Entity.EntityState.Modified;
+                c.SaveChanges();
 
-            SendEmailToUser(objUsr.Email, objUsr.ActivetionCode.ToString(), objUsr.OTP,false);
-            return View();
+                SendEmailToUser(objUsr.Email, objUsr.ActivetionCode.ToString(), objUsr.OTP, false);
+                ModelState.AddModelError("", "");
+                return View();
+            }
+            
         }
 
     }
